@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penalty Shootout Duel</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header>
+        <h1>Elite Penalty Shootout</h1>
+        <p>Feel the lights, hear the crowd, and decide the final under FIFA-style pressure.</p>
+      </header>
+
+      <main>
+        <section class="scoreboard" aria-label="Shootout tracker">
+          <div class="club club--striker">
+            <span class="club-tag">Striker</span>
+            <span class="club-name">Goals</span>
+            <span class="club-score" id="playerScore">0</span>
+          </div>
+          <div class="scoreboard-center">
+            <span class="round-label">Round</span>
+            <span class="round-value" id="roundIndicator">1 / 5</span>
+            <span class="phase-label" id="phaseLabel">On the Spot</span>
+          </div>
+          <div class="club club--keeper">
+            <span class="club-tag">Keeper</span>
+            <span class="club-name">Saves</span>
+            <span class="club-score" id="keeperScore">0</span>
+          </div>
+        </section>
+
+        <canvas id="pitch" width="960" height="540" aria-label="Penalty shootout pitch"></canvas>
+
+        <section id="controls" class="controls" aria-live="polite"></section>
+
+        <section class="log" aria-live="polite" aria-atomic="true">
+          <h2>Commentary</h2>
+          <div id="commentary"></div>
+        </section>
+      </main>
+
+      <footer>
+        <p>Dial in your angle and power, then commit. When the roles swap, explode across the goal line to deny the AI.</p>
+      </footer>
+    </div>
+
+    <template id="strikerControls">
+      <div class="control-group">
+        <label for="aimSlider">Aim (Left / Right)</label>
+        <input id="aimSlider" type="range" min="-40" max="40" value="0" />
+      </div>
+      <div class="control-group">
+        <label for="powerSlider">Power</label>
+        <input id="powerSlider" type="range" min="55" max="110" value="80" />
+      </div>
+      <button id="shootButton" class="primary">Shoot</button>
+    </template>
+
+    <template id="keeperControls">
+      <div class="control-group">
+        <label for="diveSlider">Dive Angle (Left / Right)</label>
+        <input id="diveSlider" type="range" min="-45" max="45" value="0" />
+      </div>
+      <div class="control-group">
+        <label for="reachSlider">Explosiveness</label>
+        <input id="reachSlider" type="range" min="65" max="120" value="90" />
+      </div>
+      <button id="diveButton" class="primary">Dive</button>
+    </template>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
